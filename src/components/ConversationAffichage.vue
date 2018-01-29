@@ -2,12 +2,8 @@
   <div>
      <h1>{{channel.label}}</h1>
      <h2>{{channel.topic}}</h2>
-     <router-link to="/conversations">Retour à la liste des conversations</router-link>
      <ul>
-       <li v-for="message of messages">
-        <p>{{message.message}}</p>
-        <button @click="deletePost(message._id)">Supprimer</button>
-       </li>
+        <conversationMessage v-for="message of messages" :message="message"></conversationMessage>
      </ul>
      <form @submit="creerMessage">
      <div>
@@ -19,12 +15,17 @@
 </template>
 
 <script>
+
+import ConversationMessage from './ConversationMessage.vue'
+
 export default {
   name: 'ConversationAffichage',
+  components: {ConversationMessage},
   data () {
     return {
       channel : [],
-      messages : []
+      messages : [],
+      message : ''
     }
   },
   mounted() {
@@ -35,22 +36,7 @@ export default {
     .catch(e => {
       this.errors.push(e)
     }),
-    window.axios.get('channels/'+this.$route.params.id+'/posts')
-    .then(response => {
-      this.messages = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-  },
-  updated() {
-    window.axios.get('channels/'+this.$route.params.id+'/posts')
-    .then(response => {
-      this.messages = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+    this.rafraichirMessages()
   },
   methods: {
       creerMessage() {   
@@ -58,11 +44,18 @@ export default {
         message: this.message,
       }).then(response => {
         this.message = ''
+        this.rafraichirMessages()
       })
     },
-    deletePost(id) {
-      window.axios.delete('channels/'+this.$route.params.id+'/posts/'+id);
+      rafraichirMessages() {
+        window.axios.get('channels/'+this.$route.params.id+'/posts')
+         .then(response => {
+         this.messages = response.data
+         })
+         .catch(e => {
+         this.errors.push(e)
+    })
     }
   }
-}
+}  
 </script>

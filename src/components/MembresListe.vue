@@ -1,12 +1,10 @@
 <template>
   <div>
-    <button @click="logOut">Se déconnecter</button>
-     <router-link to="/conversations">Conversations</router-link>
-     <router-link to="/membres">Liste des membres</router-link>
     <h1>Membres</h1>
       <ul>
        <li v-for="member of members">
-        <p><strong>{{member.fullname}}</strong></p>
+        <span><strong>{{member.fullname}}</strong></span>
+        <span>{{member.email}}</span>
         <button @click="deleteMember(member._id)">Supprimer</button>
       </li>
      </ul>  
@@ -29,22 +27,22 @@ export default {
     .catch(e => {
       this.errors.push(e)
     })
+    this.rafraichirMembres
   },
-  updated() {
-    window.axios.get('members')
+  methods: {
+    deleteMember(id) {
+      window.axios.delete('members/'+id).then(response => {
+        this.rafraichirMembres()
+      })
+    },
+    rafraichirMembres(){
+      window.axios.get('members')
     .then(response => {
       this.members = response.data
     })
     .catch(e => {
       this.errors.push(e)
     })
-  },
-  methods: {
-    logOut() {
-      window.bus.$emit('logout');
-    },
-    deleteMember(id) {
-      window.axios.delete('members/'+id);
     }
   }
 }

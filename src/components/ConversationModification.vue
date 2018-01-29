@@ -4,7 +4,6 @@
      <input type="text" v-model="label" placeholder="Label">
      <input type="text" v-model="topic" placeholder="Topic">
      <input type="submit" value="Modifier la conversation">
-     <router-link to="/conversations">Retour</router-link>
     </div>
   </form>
 </template>

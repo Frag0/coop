@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+    <navBar v-if="this.$store.state.member"></navBar>
     <router-view/>
   </div>
 </template>
@@ -9,12 +9,14 @@
 
 import MembreCreation from './components/MembreCreation.vue'
 import Connexion from './components/Connexion.vue'
+import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'app',
   components: {
     MembreCreation,
-    Connexion
+    Connexion,
+    NavBar
   },
   mounted() {
     if(!this.$store.state.member ) {    
