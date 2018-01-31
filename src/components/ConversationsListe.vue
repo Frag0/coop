@@ -1,6 +1,5 @@
 <template>
   <div>
-     <router-link to="/conversation-creation">Créer une conversation</router-link>
     <div>
       <ul>
        <conversationElement v-for="channel of channels" :channel="channel"></conversationElement>
