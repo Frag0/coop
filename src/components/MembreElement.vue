@@ -2,7 +2,7 @@
 	<li>
         <span><strong>{{member.fullname}}</strong></span>
         <span>{{member.email}}</span>
-        <button @click="deleteMember(member._id)">Supprimer</button>
+        <button v-if="member._id !== $store.state.member._id" @click="deleteMember(member._id)">Supprimer</button>
       </li>
 </template>
 
@@ -16,7 +16,9 @@ export default {
   },
   methods: {
     deleteMember(id) {
-      window.axios.delete('members/'+id)
+      window.axios.delete('members/'+id).then(response => {
+        window.bus.$emit('rechargerMembres')
+      })
     }
   }
 }

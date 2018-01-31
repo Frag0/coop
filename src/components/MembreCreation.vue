@@ -40,7 +40,7 @@
 
 
 
-
+  <router-link to="/connexion" class="btn btn-dark">Se connecter</router-link>
   <input type="submit" class="btn btn-dark boutonvalidation" value="Créer un compte">
 </form>
 </template>

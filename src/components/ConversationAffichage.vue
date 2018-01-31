@@ -40,9 +40,7 @@ export default {
     }),
     this.rafraichirMessages()
     this.timer = setInterval(this.rafraichirMessages, 5000)
-    window.bus.$on('rechargerMessage', function(id){
-      alert(id)
-    })
+    window.bus.$on('rechargerMessage', this.rafraichirMessages)
   },
   methods: {
       creerMessage() {   
@@ -62,6 +60,9 @@ export default {
          this.errors.push(e)
     })
     }
+  },
+  beforeDestroy() {
+    clearInterval(this.timer)
   }
 }  
 </script>

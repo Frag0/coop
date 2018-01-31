@@ -8,6 +8,7 @@
     </span>
   </li>
   <li v-else>
+    <span v-for="member of members" v-if="message.member_id === member._id">{{member.fullname}}</span>
     <input type="text" v-model="messageModif" @keyup.enter="modifPost(message._id)" @keyup.escape="modification">
     <button @click="modification">Annuler</button>  
   </li>
@@ -36,7 +37,7 @@ export default {
   methods: {
     deletePost(id) {
       window.axios.delete('channels/'+this.$route.params.id+'/posts/'+id).then(response => {
-        window.bus.$emit('rechargerMessage', id)
+        window.bus.$emit('rechargerMessage')
       })
     },
     modification(){
