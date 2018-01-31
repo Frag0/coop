@@ -2,6 +2,7 @@
   <div id="app">
     <navBar v-if="this.$store.state.member"></navBar>
     <router-view/>
+    
   </div>
 </template>
 
@@ -37,5 +38,5 @@ export default {
 </script>
 
 <style>
-
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 </style>

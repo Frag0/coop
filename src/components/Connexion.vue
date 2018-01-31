@@ -1,15 +1,23 @@
 <template>
-	<form @submit="seConnecter">
-  <div>
-    <input type="text" v-model="email" placeholder="Email">
+  <form @submit="seConnecter" class="jumbotron">
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">&#x2709;</span>
+      </div>
+      <input type="text" class="form-control" v-model="email" placeholder="Mail">
+    </div>
   </div>
-
-  <div>
-    <input type="password" v-model="password" placeholder="Mot de passe">
+  <div class="form-group">
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text glyphicon">&#xe240;</span>
+      </div>
+      <input type="password"  class="form-control" v-model="password" placeholder="Mot de passe">
+    </div>
   </div>
-
-    <input type="submit" value="Se connecter">
-  	<router-link to="/membre-creation">Créer un compte</router-link>
+    <input class="btn btn-dark" type="submit" value="Se connecter">
+    <router-link to="/membre-creation" class="btn btn-dark">Créer un compte</router-link>
  </form>
 </template>
 
@@ -39,3 +47,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+form{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left:50%;  
+  transform: translate(-50%,-50%);
+}
+</style>
