@@ -4,7 +4,7 @@
      <h2>{{channel.topic}}</h2>
      <button @click="rafraichirMessages">Rafraîchir</button>
      <ul>
-        <conversationMessage v-for="message of messages" :message="message"></conversationMessage>
+        <conversationMessage v-for="message of messages" :key="message._id" :message="message"></conversationMessage>
      </ul>
      <form @submit="creerMessage">
      <div>

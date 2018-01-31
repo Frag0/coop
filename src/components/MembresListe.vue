@@ -2,7 +2,7 @@
   <div>
     <h1>Membres</h1>
       <ul>
-       <membreElement class="test" v-for="member of members" :member="member"></membreElement>
+       <membreElement class="test" v-for="member of members" :key="member._id" :member="member"></membreElement>
      </ul>  
   </div>
 </template>
