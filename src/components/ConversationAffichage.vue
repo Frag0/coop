@@ -37,6 +37,9 @@ export default {
       this.errors.push(e)
     }),
     this.rafraichirMessages()
+    window.bus.$on('rechargerMessage', function(id){
+      messages.splice(id)
+    })
   },
   methods: {
       creerMessage() {   
