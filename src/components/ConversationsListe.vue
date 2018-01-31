@@ -22,6 +22,7 @@ export default {
   },
   mounted() {
     this.rafraichirConvos()
+    window.bus.$on('rechargerConvos', this.rafraichirConvos)
   },
   methods: {
     rafraichirConvos() {

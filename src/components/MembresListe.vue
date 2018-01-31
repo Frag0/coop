@@ -29,6 +29,7 @@ export default {
       this.errors.push(e)
     })
     this.rafraichirMembres
+    window.bus.$on('rechargerMembres', this.rafraichirMembres)
   },
   methods: {
     rafraichirMembres(){

@@ -24,6 +24,14 @@
       <input type="password"  class="form-control" v-model="password" placeholder="Mot de passe">
     </div>
   </div>
+<<<<<<< HEAD
+=======
+
+
+
+
+  <router-link to="/connexion" class="btn btn-dark">Se connecter</router-link>
+>>>>>>> 46cae96252ade1555883495aab46def71017ecc9
   <input type="submit" class="btn btn-dark boutonvalidation" value="Créer un compte">
 </form>
 </template>

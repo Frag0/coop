@@ -17,7 +17,9 @@ export default {
   },
   methods: {
     deleteChannel(id) {
-      window.axios.delete('channels/'+id)
+      window.axios.delete('channels/'+id).then(response => {
+        window.bus.$emit('rechargerConvos')
+      })
     },
   }
 }
