@@ -1,28 +1,55 @@
 <template>
- <form @submit="creerMembre">
-  <div>
-    <input type="text" v-model="fullname" placeholder="Nom">
+ <form @submit="creerMembre" class="jumbotron">
+
+
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">@</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Username" v-model="fullname">
+    </div>
   </div>
 
-  <div>
-    <input type="text" v-model="email" placeholder="Mail">
+
+
+
+
+
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">&#x2709;</span>
+      </div>
+      <input type="text" class="form-control" v-model="email" placeholder="Mail">
+    </div>
   </div>
 
-  <div>
-    <input type="password" v-model="password" placeholder="Mot de passe">
+
+
+
+  <div class="form-group">
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text glyphicon">&#xe240;</span>
+      </div>
+      <input type="password"  class="form-control" v-model="password" placeholder="Mot de passe">
+    </div>
   </div>
 
-    <input type="submit" value="Créer un compte">
-    <router-link to="/connexion">Se connecter</router-link>
-  
- </form>
+
+
+
+
+  <input type="submit" class="btn btn-dark boutonvalidation" value="Créer un compte">
+</form>
 </template>
 
 <script>
 export default {
   name: 'MembreCreation',
   data () {
-    return {
+    return {  
       fullname: '',
       email : '',
       password: '',
@@ -47,4 +74,11 @@ export default {
 
 <style scoped>
 
+form{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left:50%;  
+  transform: translate(-50%,-50%);
+} 
 </style>
