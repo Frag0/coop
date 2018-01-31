@@ -1,19 +1,9 @@
 <template>
   <div>
-   <div>
-     Vous êtes connecté
-     <button @click="logOut">Se déconnecter</button>
      <router-link to="/conversation-creation">Créer une conversation</router-link>
-     <router-link to="/membres">Liste des membres</router-link>
-    </div>
     <div>
       <ul>
-       <li v-for="channel of channels">
-        <p><strong><router-link :to="{ name: 'conversation-affichage', params : {id:channel._id} }">{{channel.label}}</router-link></strong></p>
-        <p>{{channel.topic}}</p>
-        <router-link :to="{ name: 'conversation-modification', params : {id:channel._id} }">Modifier</router-link>
-        <button @click="deleteChannel(channel._id)">Supprimer</button>
-      </li>
+       <conversationElement v-for="channel of channels" :channel="channel"></conversationElement>
      </ul>
 
     </div>
@@ -21,37 +11,27 @@
 </template>
 
 <script>
+
+import ConversationElement from './ConversationElement.vue'
 export default {
   name: 'ConversationsListe',
+  components: {ConversationElement},
   data () {
     return {
-      channels : []
+      channels : [],
+      channel: ''
     }
   },
   mounted() {
-    window.axios.get('channels')
-    .then(response => {
-      this.channels = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-  },
-  updated() {
-    window.axios.get('channels')
-    .then(response => {
-      this.channels = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+    this.rafraichirConvos()
   },
   methods: {
-    logOut() {
-      window.bus.$emit('logout');
-    },
-    deleteChannel(id) {
-      window.axios.delete('channels/'+id);
+    rafraichirConvos() {
+      window.axios.get('channels').then(response => {
+        this.channels = response.data
+      }).catch(e => {
+        this.errors.push(e)
+      })
     }
   }
 }
