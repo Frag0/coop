@@ -2,21 +2,21 @@
   <div>
     <h1>Membres</h1>
       <ul>
-       <li v-for="member of members">
-        <span><strong>{{member.fullname}}</strong></span>
-        <span>{{member.email}}</span>
-        <button @click="deleteMember(member._id)">Supprimer</button>
-      </li>
+       <membreElement v-for="member of members" :member="member"></membreElement>
      </ul>  
   </div>
 </template>
 
 <script>
+
+import MembreElement from './MembreElement.vue'
+
 export default {
   name: 'MembresListe',
   data () {
     return {
-      members : []
+      members : [],
+      member : ''
     }
   },
   mounted() {
@@ -30,11 +30,6 @@ export default {
     this.rafraichirMembres
   },
   methods: {
-    deleteMember(id) {
-      window.axios.delete('members/'+id).then(response => {
-        this.rafraichirMembres()
-      })
-    },
     rafraichirMembres(){
       window.axios.get('members')
     .then(response => {

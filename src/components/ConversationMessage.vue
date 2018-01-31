@@ -22,7 +22,9 @@ export default {
   },
   methods: {
     deletePost(id) {
-      window.axios.delete('channels/'+this.$route.params.id+'/posts/'+id);
+      window.axios.delete('channels/'+this.$route.params.id+'/posts/'+id).then(response => {
+        this.message.message = ''
+      })
     },
     modification(){
         if (this.modif) {
