@@ -2,7 +2,7 @@
   <div>
     <h1>Membres</h1>
       <ul>
-       <membreElement v-for="member of members" :member="member"></membreElement>
+       <membreElement class="test" v-for="member of members" :member="member"></membreElement>
      </ul>  
   </div>
 </template>
@@ -43,3 +43,13 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+h1{
+
+text-align: center;
+
+
+}
+</style>

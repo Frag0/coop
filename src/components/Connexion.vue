@@ -1,5 +1,6 @@
 <template>
   <form @submit="seConnecter" class="jumbotron">
+  <h1 class="display-4">Co'op</h1>
   <div class="form-group">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -54,5 +55,10 @@ form{
   top: 50%;
   left:50%;  
   transform: translate(-50%,-50%);
+}
+h1{
+
+margin-bottom: 5%;
+
 }
 </style>

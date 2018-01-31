@@ -4,7 +4,6 @@
       <ul>
        <conversationElement v-for="channel of channels" :channel="channel"></conversationElement>
      </ul>
-
     </div>
   </div>
 </template>
@@ -35,3 +34,7 @@ export default {
   }
 }
 </script>
+<style scoped>
+  
+  
+</style>

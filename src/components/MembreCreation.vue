@@ -1,7 +1,5 @@
 <template>
  <form @submit="creerMembre" class="jumbotron">
-
-
   <div class="form-group">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -10,12 +8,6 @@
       <input type="text" class="form-control" placeholder="Username" v-model="fullname">
     </div>
   </div>
-
-
-
-
-
-
   <div class="form-group">
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -24,10 +16,6 @@
       <input type="text" class="form-control" v-model="email" placeholder="Mail">
     </div>
   </div>
-
-
-
-
   <div class="form-group">
      <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -36,11 +24,6 @@
       <input type="password"  class="form-control" v-model="password" placeholder="Mot de passe">
     </div>
   </div>
-
-
-
-
-
   <input type="submit" class="btn btn-dark boutonvalidation" value="Créer un compte">
 </form>
 </template>
