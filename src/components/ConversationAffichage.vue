@@ -2,6 +2,7 @@
   <div>
      <h1>{{channel.label}}</h1>
      <h2>{{channel.topic}}</h2>
+     <button @click="rafraichirMessages">Rafraîchir</button>
      <ul>
         <conversationMessage v-for="message of messages" :message="message"></conversationMessage>
      </ul>
@@ -25,7 +26,8 @@ export default {
     return {
       channel : [],
       messages : [],
-      message : ''
+      message : '',
+      timer: ''
     }
   },
   mounted() {
@@ -37,8 +39,9 @@ export default {
       this.errors.push(e)
     }),
     this.rafraichirMessages()
+    this.timer = setInterval(this.rafraichirMessages, 5000)
     window.bus.$on('rechargerMessage', function(id){
-      messages.splice(id)
+      alert(id)
     })
   },
   methods: {

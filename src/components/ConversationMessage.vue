@@ -4,7 +4,7 @@
     <span>{{message.message}}</span>
     <span v-if="message.member_id === $store.state.member._id">
       <button @click="modification">Modifier</button> 
-      <button @click="deletePost(message._id)">Supprimer</button>   
+      <button @click="deletePost(message._id)">Supprimer</button>
     </span>
   </li>
   <li v-else>
@@ -19,7 +19,7 @@ export default {
   props: ['message'],
   data () {
     return {
-      modif:false,
+      modif: false,
       messageModif: "",
       members: [],
     }
