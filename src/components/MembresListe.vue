@@ -13,6 +13,7 @@ import MembreElement from './MembreElement.vue'
 
 export default {
   name: 'MembresListe',
+  components: {MembreElement},
   data () {
     return {
       members : [],

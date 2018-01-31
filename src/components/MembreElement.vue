@@ -16,18 +16,7 @@ export default {
   },
   methods: {
     deleteMember(id) {
-      window.axios.delete('members/'+id).then(response => {
-        this.rafraichirMembres()
-      })
-    },
-    rafraichirMembres(){
-      window.axios.get('members')
-    .then(response => {
-      this.members = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+      window.axios.delete('members/'+id)
     }
   }
 }

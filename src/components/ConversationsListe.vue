@@ -3,12 +3,7 @@
      <router-link to="/conversation-creation">Créer une conversation</router-link>
     <div>
       <ul>
-       <li v-for="channel of channels">
-        <span><strong><router-link :to="{ name: 'conversation-affichage', params : {id:channel._id} }">{{channel.label}}</router-link></strong></span>
-        <span>{{channel.topic}}</span>
-        <router-link :to="{ name: 'conversation-modification', params : {id:channel._id} }">Modifier</router-link>
-        <button @click="deleteChannel(channel._id)">Supprimer</button>
-      </li>
+       <conversationElement v-for="channel of channels" :channel="channel"></conversationElement>
      </ul>
 
     </div>
@@ -16,22 +11,21 @@
 </template>
 
 <script>
+
+import ConversationElement from './ConversationElement.vue'
 export default {
   name: 'ConversationsListe',
+  components: {ConversationElement},
   data () {
     return {
-      channels : []
+      channels : [],
+      channel: ''
     }
   },
   mounted() {
     this.rafraichirConvos()
   },
   methods: {
-    deleteChannel(id) {
-      window.axios.delete('channels/'+id).then(response => {
-        this.rafraichirConvos()
-      })
-    },
     rafraichirConvos() {
       window.axios.get('channels').then(response => {
         this.channels = response.data
