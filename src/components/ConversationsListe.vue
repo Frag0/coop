@@ -2,7 +2,7 @@
   <div>
     <div>
       <ul>
-       <conversationElement v-for="channel of channels" :channel="channel"></conversationElement>
+       <conversationElement v-for="channel of channels" :key="channel._id" :channel="channel"></conversationElement>
      </ul>
     </div>
   </div>
