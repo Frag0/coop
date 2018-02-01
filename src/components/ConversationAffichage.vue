@@ -1,15 +1,19 @@
 <template>
   <div>
      <h1>{{channel.label}}</h1>
+     <hr>
      <h2>{{channel.topic}}</h2>
-     <button @click="rafraichirMessages">Rafraîchir</button>
+     <hr>
      <ul>
         <conversationMessage v-for="message of messages" :key="message._id" :message="message"></conversationMessage>
+
      </ul>
+    <hr>
      <form @submit="creerMessage">
      <div>
-      <input type="text" v-model="message">
-      <input type="submit" value="Envoyer">
+      <input type="text" v-model="message" class="chat">
+      <input type="submit" value="Envoyer" class="btn btn-outline-success">
+      <button @click="rafraichirMessages" class="btn btn-outline-info">Rafraîchir</button>
      </div>
    </form>
   </div>
@@ -66,3 +70,16 @@ export default {
   }
 }  
 </script>
+<style scoped>
+  
+h1,h2{
+
+text-align: center;
+
+}
+
+.chat{
+width: 90%
+
+}
+</style>

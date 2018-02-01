@@ -5,19 +5,11 @@
       <div class="card-body">
         <h5 class="card-title">{{member.fullname}}</h5>
         <p class="card-text">{{member.email}}</p>
-        <button v-if="member._id !== $store.state.member._id" @click="deleteMember(member._id)" class="btn btn-outline-danger glyphicon glyphicon-trash">Supprimer</button>
+        <button v-if="member._id !== $store.state.member._id" @click="deleteMember(member._id)" class="btn btn-outline-danger">Supprimer</button>
       </div>
     </div>
   </div>
 </div>  
-
-<!--	<li>
-        <span><strong>{{member.fullname}}</strong></span>
-        <span>{{member.email}}</span>
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        <button v-if="member._id !== $store.state.member._id" @click="deleteMember(member._id)">Supprimer</button>
-      </li>-->
-
 </template>
 
 <script>
@@ -45,6 +37,7 @@ export default {
 
 text-align: center;
 width: 100%;
+margin-bottom: 5px;
 }
 
 

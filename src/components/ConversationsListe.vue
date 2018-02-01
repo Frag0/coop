@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <h1>Conversations</h1>
       <ul>
        <conversationElement v-for="channel of channels" :key="channel._id" :channel="channel"></conversationElement>
      </ul>
@@ -38,5 +39,11 @@ export default {
 </script>
 <style scoped>
   
+h1{
+
+text-align: center;
+
+}
+
   
 </style>

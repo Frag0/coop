@@ -1,17 +1,33 @@
 <template>
-  <li v-if="!modif">
+
+
+
+  <p v-if="!modif">
+
     <span v-for="member of members" v-if="message.member_id === member._id">{{member.fullname}}</span>
+  </br>
     <span>{{message.message}}</span>
+
+
+
     <span v-if="message.member_id === $store.state.member._id">
-      <button @click="modification">Modifier</button> 
-      <button @click="deletePost(message._id)">Supprimer</button>
+      </br>
+      <button @click="modification" class="btn btn-outline-warning">Modifier</button> 
+      <button @click="deletePost(message._id)" class="btn btn-outline-danger">Supprimer</button>
+
     </span>
-  </li>
-  <li v-else>
+  </p>
+
+  <p v-else>
+
     <span v-for="member of members" v-if="message.member_id === member._id">{{member.fullname}}</span>
+
     <input type="text" v-model="messageModif" @keyup.enter="modifPost(message._id)" @keyup.escape="modification">
-    <button @click="modification">Annuler</button>  
-  </li>
+
+    <button @click="modification" class="btn btn-outline-secondary">Annuler</button> 
+
+  </p>
+
 </template>
 
 <script>
@@ -60,3 +76,14 @@ export default {
   }
 }  
 </script>
+
+<style scoped>
+  p{
+
+    text-align: center;
+
+
+  }
+
+
+</style>
