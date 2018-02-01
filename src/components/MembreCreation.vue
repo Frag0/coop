@@ -5,7 +5,7 @@
       <div class="input-group-prepend">
         <span class="input-group-text">@</span>
       </div>
-      <input type="text" class="form-control" placeholder="Username" v-model="fullname">
+      <input type="text" class="form-control" placeholder="Nom" v-model="fullname">
     </div>
   </div>
   <div class="form-group">
